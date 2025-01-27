@@ -1,0 +1,338 @@
+:root {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --primary-color: #4CAF50;
+  --danger-color: #f44336;
+  --accent-color: #2196F3;
+  --border-color: #e0e0e0;
+  --hover-color: #f5f5f5;
+  --link-color: #2196F3;
+}
+
+body.dark-theme {
+  --bg-color: #1a1a1a;
+  --text-color: #ffffff;
+  --border-color: #333333;
+  --hover-color: #2a2a2a;
+  --link-color: #90caf9;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.toolbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 48px;
+  background-color: var(--bg-color);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.toolbar button {
+  margin: 0 5px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  background-color: transparent;
+  color: var(--text-color);
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-weight: 500;
+}
+
+.toolbar button:hover {
+  background-color: var(--hover-color);
+}
+
+.toolbar button.active {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.webview-container {
+  margin-top: 48px;
+  height: calc(100vh - 48px);
+}
+
+#webview {
+  width: 100%;
+  height: 100%;
+}
+
+.side-panel {
+  position: fixed;
+  right: 0;
+  top: 48px;
+  width: 300px;
+  height: calc(100vh - 48px);
+  background-color: var(--bg-color);
+  border-left: 1px solid var(--border-color);
+  padding: 16px;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.side-panel.open {
+  transform: translateX(0);
+}
+
+.side-panel h3 {
+  margin: 0 0 16px 0;
+  color: var(--text-color);
+  font-size: 18px;
+}
+
+.side-panel-content {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.bookmark-item, .note-item {
+  background-color: var(--bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 12px;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bookmark-item a, .note-item-title {
+  color: var(--link-color);
+  text-decoration: none;
+  flex: 1;
+}
+
+.bookmark-item button, .note-item button {
+  padding: 4px 8px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 8px;
+}
+
+.delete-btn {
+  background-color: var(--danger-color);
+  color: white;
+}
+
+.edit-btn {
+  background-color: var(--accent-color);
+  color: white;
+}
+
+.notification {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 12px 24px;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 4px;
+  display: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  z-index: 2000;
+}
+
+.import-dialog {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--dialog-bg);
+  z-index: 2000;
+  align-items: center;
+  justify-content: center;
+}
+
+.import-dialog.open {
+  display: flex;
+}
+
+.import-content {
+  background-color: var(--bg-color);
+  padding: 24px;
+  border-radius: 8px;
+  min-width: 400px;
+  max-width: 600px;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.import-content h3 {
+  margin-top: 0;
+  color: var(--text-color);
+  font-size: 20px;
+  margin-bottom: 16px;
+}
+
+.import-content p {
+  color: var(--text-color);
+  margin-bottom: 16px;
+}
+
+.account-list {
+  margin: 16px 0;
+}
+
+.account-item {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.account-item:hover {
+  background-color: var(--hover-color);
+}
+
+.account-item.selected {
+  border-color: var(--primary-color);
+  background-color: rgba(76, 175, 80, 0.1);
+}
+
+.account-info {
+  flex: 1;
+}
+
+.account-name {
+  font-weight: 500;
+  color: var(--text-color);
+  margin-bottom: 4px;
+}
+
+.account-details {
+  font-size: 12px;
+  color: var(--text-color);
+  opacity: 0.7;
+}
+
+.import-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.import-buttons button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: opacity 0.2s;
+}
+
+.import-buttons button:hover {
+  opacity: 0.9;
+}
+
+#start-import {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+#close-import {
+  background-color: var(--danger-color);
+  color: white;
+}
+
+.notes-panel {
+  position: fixed;
+  right: 0;
+  top: 48px;
+  width: 300px;
+  height: calc(100vh - 48px);
+  background-color: var(--bg-color);
+  border-left: 1px solid var(--border-color);
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+}
+
+.notes-panel.open {
+  transform: translateX(0);
+}
+
+.note-editor {
+  padding: 16px;
+}
+
+.note-editor input, .note-editor textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.note-editor textarea {
+  height: 120px;
+  resize: vertical;
+}
+
+.note-list {
+  padding: 16px;
+  overflow-y: auto;
+  height: calc(100% - 200px);
+}
+
+.loading-error {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--bg-color);
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+}
+
+.loading-error h3 {
+  margin: 0 0 16px 0;
+  color: var(--text-color);
+}
+
+.loading-error p {
+  margin: 0 0 20px 0;
+  color: var(--text-color);
+  opacity: 0.8;
+}
+
+.loading-error button {
+  padding: 8px 24px;
+  border: none;
+  border-radius: 4px;
+  background-color: var(--primary-color);
+  color: white;
+  cursor: pointer;
+  font-weight: 500;
+  transition: opacity 0.2s;
+}
+
+.loading-error button:hover {
+  opacity: 0.9;
+} 

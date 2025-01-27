@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>YouGame Helper</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="toolbar">
+        <button id="home">Главная</button>
+        <button id="market">Маркет</button>
+        <button id="forum">Форум</button>
+        <button id="profile">Профиль</button>
+        <button id="sources">Сурсы</button>
+        <button id="refresh">Обновить</button>
+        <button id="theme-toggle">Тёмная тема</button>
+        <button id="bookmarks-toggle">Закладки</button>
+        <button id="notes-toggle">Заметки</button>
+    </div>
+
+    <div class="webview-container">
+        <webview 
+            id="webview" 
+            src="https://yougame.biz" 
+            allowpopups 
+            webpreferences="contextIsolation=false"
+            useragent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+            partition="persist:main"
+        ></webview>
+        <div id="loading-error" class="loading-error" style="display: none;">
+            <h3>Ошибка загрузки</h3>
+            <p id="error-message"></p>
+            <button id="retry-button">Повторить</button>
+        </div>
+    </div>
+
+    <div class="side-panel" id="bookmark-panel">
+        <h3>Закладки</h3>
+        <div class="side-panel-content" id="bookmarks-list"></div>
+        <button id="add-bookmark" class="add-btn">Добавить текущую страницу</button>
+    </div>
+
+    <div class="side-panel" id="notes-panel">
+        <h3>Заметки</h3>
+        <div class="note-editor">
+            <input type="text" id="note-title" placeholder="Заголовок заметки">
+            <textarea id="note-content" placeholder="Текст заметки"></textarea>
+            <div class="import-buttons">
+                <button id="save-note">Сохранить</button>
+                <button id="cancel-note" class="delete-btn">Отмена</button>
+            </div>
+        </div>
+        <div class="side-panel-content" id="notes-list"></div>
+    </div>
+
+    <div class="notification" id="notification"></div>
+
+    <script src="renderer.js"></script>
+</body>
+</html> 
